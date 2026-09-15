@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ═══════════════════════════════════════════════════
+   ORBIS — GLOBAL DESIGN TOKENS
+════════════════════════════════════════════════════ */
+:root {
+  --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+
+  /* Core Backgrounds */
+  --bg-void:      #04070d;
+  --bg-dark:      #060a12;
+  --bg-card:      rgba(10, 16, 28, 0.72);
+  --bg-card-hover:rgba(14, 22, 38, 0.88);
+  --bg-glass:     rgba(8, 14, 24, 0.55);
+
+  /* Borders */
+  --border-dim:   rgba(56, 189, 248, 0.12);
+  --border-mid:   rgba(56, 189, 248, 0.28);
+  --border-glow:  rgba(56, 189, 248, 0.55);
+
+  /* Accent Palette */
+  --cyan:         #38bdf8;
+  --cyan-bright:  #00f0ff;
+  --cyan-dim:     #0ea5e9;
+  --white:        #f8fafc;
+
+  /* Text */
+  --text-white:   #f8fafc;
+  --text-muted:   #94a3b8;
+  --text-dim:     #475569;
+
+  /* Glows */
+  --glow-sm:  0 0 18px rgba(0,240,255,0.30);
+  --glow-md:  0 0 35px rgba(0,240,255,0.45);
+  --glow-lg:  0 0 60px rgba(0,240,255,0.55);
+}
+
+/* ═══════════════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-primary);
+  background-color: var(--bg-void);
+  color: var(--text-white);
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* SITE-WIDE SPACE BACKGROUND — fixed so it persists on all sections */
+  background-color: var(--bg-void);
+}
+
+/* ═══════════════════════════════════════════════════
+   GLOBAL SCROLLBAR
+════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb {
+  background: rgba(56,189,248,0.35);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56,189,248,0.65);
+}
+
+/* ═══════════════════════════════════════════════════
+   LAYOUT
+════════════════════════════════════════════════════ */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES
+════════════════════════════════════════════════════ */
+.gradient-text {
+  background: linear-gradient(90deg, #ffffff 0%, #7dd3fc 60%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-cyan {
+  background: linear-gradient(90deg, #bae6fd 0%, #38bdf8 50%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════
+   GLASS CARD
+════════════════════════════════════════════════════ */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--border-dim);
+  border-radius: 18px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.glass-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: var(--glow-sm);
+  background: var(--bg-card-hover);
+}
+
+/* ═══════════════════════════════════════════════════
+   SECTION WRAPPERS  (transparent → share global bg)
+════════════════════════════════════════════════════ */
+.section-dark {
+  position: relative;
+  padding: 7rem 0;
+  /* Subtle dark tint so each section reads cleanly on the void bg */
+  background: linear-gradient(
+    180deg,
+    rgba(4,7,13,0.97) 0%,
+    rgba(6,10,18,0.98) 100%
+  );
+}
+
+.section-darker {
+  position: relative;
+  padding: 7rem 0;
+  background: rgba(4,6,11,0.99);
+}
+
+/* ═══════════════════════════════════════════════════
+   SECTION LABEL / EYEBROW
+════════════════════════════════════════════════════ */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.75rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════════════════ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.82rem 1.9rem;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+  color: #020c18;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 0.93rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba(56,189,248,0.32);
+  transition: all 0.28s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(56,189,248,0.55);
+  background: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.82rem 1.6rem;
+  background: rgba(6,10,18,0.65);
+  color: var(--text-white);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.93rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all 0.28s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-outline:hover {
+  border-color: var(--cyan-bright);
+  color: var(--cyan-bright);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-2px);
+}
+
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.3rem;
+  background: rgba(8,14,24,0.80);
+  color: var(--text-white);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.22);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn-nav:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(56,189,248,0.1);
+  box-shadow: 0 0 16px rgba(56,189,248,0.28);
+}
+
+/* ═══════════════════════════════════════════════════
+   MODAL OVERLAY
+════════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(2,5,12,0.88);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════════════
+   ORBIS LOGO SVG  (shared component)
+════════════════════════════════════════════════════ */
+.orbis-logo-svg {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(0,240,255,0.6));
+}
+
+/* ═══════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollDot {
+  0%   { transform: translateY(0);   opacity: 0.7; }
+  50%  { transform: translateY(7px); opacity: 1;   }
+  100% { transform: translateY(0);   opacity: 0.7; }
+}
+
+@keyframes floatY {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%,100% { opacity: 0.5; }
+  50%      { opacity: 1;   }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE HELPERS
+════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .container { padding: 0 1.25rem; }
+  .section-dark,
+  .section-darker { padding: 4.5rem 0; }
+}
